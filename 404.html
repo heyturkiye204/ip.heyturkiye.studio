@@ -21,17 +21,17 @@
 <body>
     <nav class="navbar navbar-expand-md navbar-light bg-light" id="main-nav">
         <div class="container-fluid">
-            <a href="/" class="navbar-brand"><span style="font-family:'Trebuchet MS';color:Indigo;font-weight:bold;"><span style="font-size:120%;">F</span><span style="font-size:90%;">TOOLS</span></span></a>
+            <a href="/" class="navbar-brand"><span style="font-family:'Trebuchet MS';color:Indigo;font-weight:bold;"><span style="font-size:120%;">Hey Türkiye</span><span style="font-size:90%;">- Araçlar</span></span></a>
             <button class="navbar-toggler" data-toggle="collapse" data-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item">
-                        <a class="nav-link" href="https://github.com/fastily/ftools">Source</a>
+                        <a class="nav-link" href="https://github.com/fastily/ftools">Kaynak Kod</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="https://toolforge.org">Toolforge</a>
+                        <a class="nav-link" href="https://heyturkiye.live/">🏠 Hakkımda</a>
                     </li>
                 </ul>
             </div>
@@ -39,19 +39,19 @@
     </nav>    
 <header>
     <div class="container jumbotron mt-4">
-        <h1 class="display-4">ip-range-calc</h1>
-        <p class="lead">(calculate the smallest CIDR block encompassing a given list of IP addresses)</p>
+        <h1 class="display-4">IP adresi aralığı sorgulama</h1>
+        <p class="lead">Bu araç sayesinde belirli bir IP adresleri listesini kapsayan IP adres aralığını bulabilirsiniz.</p>
     </div>
 </header>
 <section class="container mb-5">
 	<div id="app">
 		<form>
 			<div class="form-group mb-4">
-				<label for="mainTextInput">List the IP addresses below (one per line)</label>
+				<label for="mainTextInput">IP adreslerini aşağıya yazın (Her Satır = 1 IP adresi)</label>
 				<textarea class="form-control" rows="7" id="mainTextInput" v-model.trim="inputText"></textarea>
 			</div>
 			<fieldset class="form-group mb-4">
-				<legend class="col-form-label">What kind of IP addresses are these?</legend>
+				<legend class="col-form-label">Bu IP adresleri, ne tür IP adresleridir?</legend>
 				<div class="form-check">
 					<input class="form-check-input" type="radio" name="ipv4Radio" id="exampleRadios1" value="4" v-model="selectedIPType">
 					<label class="form-check-label" for="ipv4Radio">IPv4</label>
@@ -61,15 +61,15 @@
 					<label class="form-check-label" for="ipv6Radio">IPv6</label>
 				</div>
 			</fieldset>
-			<input type="button" value="Calculate" class="btn btn-primary" v-on:click.prevent="calculate" :disabled="!inputText">
+			<input type="button" value="Sorgula" class="btn btn-primary" v-on:click.prevent="calculate" :disabled="!inputText">
 		</form>
 
 		<div class="card mt-4" v-show="showResult">
-			<div class="card-header">Result</div>
+			<div class="card-header">Sonuç</div>
 			<div class="card-body">{{resultText}}</div>
 		</div>
 
-		<div class="alert alert-warning mt-2" role="alert" v-if="showBigRangeWarning">⚠️ MediaWiki prohibits rangeblocks this large. Try experimenting with multiple, smaller ranges.</div>
+		<div class="alert alert-warning mt-2" role="alert" v-if="showBigRangeWarning">⚠️ MediaWiki bu kadar büyük aralık bloklarını yasaklar.  Birden çok, daha küçük aralıklarla denemeler yapmayı deneyin.</div>
 	</div>
 </section>
     <script src="https://tools-static.wmflabs.org/cdnjs/ajax/libs/jquery/3.5.1/jquery.min.js" crossorigin="anonymous"></script>
