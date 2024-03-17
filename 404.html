@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>IP adresi Aralığı Sorgulama</title>
+    <title>A | IP adresi Aralığı Sorgulama</title>
    <meta name="description" content="IP adresi aralığı sorgulama sitesidir." />
     <link rel="icon" href="https://ip.heyturkiye.studio/favicon.svg" type="image/x-icon">
     <!-- CSS -->
@@ -96,7 +96,7 @@
 				const addrs = [];
 				for (const ip of this.inputText.split("\n").map(s => s.replace(/[\u200B-\u200F]/, "").trim()).filter(s => s)) {
 					if (!protocol.isValid(ip))
-						return alert(`ERROR: "${ip}" is not a valid IPv${this.selectedIPType} address, please fix this before proceeding.`);
+						return alert(`HATA: "${ip}" geçerli bir IPv${this.selectedIPType} adresi değil, lütfen devam etmeden önce bunu düzeltin.`);
 
 					addrs.push(ipaddr.parse(ip));
 				}
