@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>B | IP adresi Aralığı Sorgulama</title>
+    <title>IP adresi aralığı Sorgulama</title>
    <meta name="description" content="IP adresi aralığı sorgulama sitesidir." />
     <link rel="icon" href="https://ip.heyturkiye.studio/favicon.svg" type="image/x-icon">
     <!-- CSS -->
@@ -66,7 +66,7 @@
 
 		<div class="card mt-4" v-show="showResult">
 			<div class="card-header">Sonuç</div>
-			<div class="card-body">{{resultText}}</div>
+			<div class="card-body"><b>Liste</b>:<br><br>{{resultText}}</div>
 		</div>
 
 		<div class="alert alert-warning mt-2" role="alert" v-if="showBigRangeWarning">⚠️ MediaWiki bu kadar büyük aralık bloklarını yasaklar.  Birden çok, daha küçük aralıklarla denemeler yapmayı deneyin.</div>
