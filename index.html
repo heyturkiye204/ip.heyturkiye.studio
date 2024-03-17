@@ -66,10 +66,10 @@
 
 		<div class="card mt-4" v-show="showResult">
 			<div class="card-header">Sonuç</div>
-			<div class="card-body"><b>Liste</b>:<br><br>{{resultText}}</div>
+			<div class="card-body">{{resultText}}</div>
 		</div>
 
-		<div class="alert alert-warning mt-2" role="alert" v-if="showBigRangeWarning">⚠️ MediaWiki bu kadar büyük aralık bloklarını yasaklar.  Birden çok, daha küçük aralıklarla denemeler yapmayı deneyin.</div>
+		<div class="alert alert-warning mt-2" role="alert" v-if="showBigRangeWarning">⚠️ MediaWiki bu kadar büyük aralık bloklarını yasaklamaktadır. Birden fazla, daha küçük aralıklarla deneme yapmayı deneyin.</div>
 	</div>
 </section>
     <script src="https://tools-static.wmflabs.org/cdnjs/ajax/libs/jquery/3.5.1/jquery.min.js" crossorigin="anonymous"></script>
