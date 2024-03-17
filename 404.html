@@ -4,26 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-
-    <!-- Facebook Sharing -->
-    <meta property="og:title" content="ftools" />
-    <meta property="og:description" content="Fastily's Tools" />
-    <meta property="og:image" content="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c5/Toolforge_logo.svg/480px-Toolforge_logo.svg.png" />
-
-    <!-- Googlebot -->
-    <meta name="description" content="Fastily's Wikipedia Tools.  Privacy First: No ads, no tracking, no nonsense." />
-
-    <title>ip-range-calc</title>
-
-    <!-- favicon -->
-    <link rel="icon" href="https://tools-static.wmflabs.org/toolforge/favicons/favicon.ico" type="image/x-icon">
-
+    <title>IP adresi aralığı sorgulama</title>
+    <link rel="icon" href="https://gramaltin.netlify.app/favicon.svg" type="image/x-icon">
     <!-- CSS -->
-    <link rel="stylesheet" href="https://tools-static.wmflabs.org/cdnjs/ajax/libs/twitter-bootstrap/4.6.1/css/bootstrap.min.css" crossorigin="anonymous">
-
-    
+    <link rel="stylesheet" href="https://tools-static.wmflabs.org/cdnjs/ajax/libs/twitter-bootstrap/4.6.1/css/bootstrap.min.css" crossorigin="anonymous">    
 </head>
-
 <body>
     <nav class="navbar navbar-expand-md navbar-light bg-light" id="main-nav">
         <div class="container-fluid">
@@ -33,9 +18,6 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ml-auto">
-                    
-
-
                     <li class="nav-item">
                         <a class="nav-link" href="https://github.com/fastily/ftools">Source</a>
                     </li>
@@ -45,18 +27,13 @@
                 </ul>
             </div>
         </div>
-    </nav>
-
-    
+    </nav>    
 <header>
     <div class="container jumbotron mt-4">
         <h1 class="display-4">ip-range-calc</h1>
         <p class="lead">(calculate the smallest CIDR block encompassing a given list of IP addresses)</p>
     </div>
 </header>
-
-
-
 <section class="container mb-5">
 	<div id="app">
 		<form>
@@ -75,7 +52,6 @@
 					<label class="form-check-label" for="ipv6Radio">IPv6</label>
 				</div>
 			</fieldset>
-
 			<input type="button" value="Calculate" class="btn btn-primary" v-on:click.prevent="calculate" :disabled="!inputText">
 		</form>
 
@@ -87,18 +63,10 @@
 		<div class="alert alert-warning mt-2" role="alert" v-if="showBigRangeWarning">⚠️ MediaWiki prohibits rangeblocks this large. Try experimenting with multiple, smaller ranges.</div>
 	</div>
 </section>
-
-
-
-
-
     <script src="https://tools-static.wmflabs.org/cdnjs/ajax/libs/jquery/3.5.1/jquery.min.js" crossorigin="anonymous"></script>
     <script src="https://tools-static.wmflabs.org/cdnjs/ajax/libs/twitter-bootstrap/4.6.1/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
     <script src="https://tools-static.wmflabs.org/cdnjs/ajax/libs/vue/3.2.27/vue.global.prod.min.js" crossorigin="anonymous"></script>
-    
-
-<script src="https://tools-static.wmflabs.org/cdnjs/ajax/libs/ipaddr.js/2.0.1/ipaddr.min.js" crossorigin="anonymous"></script>
-
+    <script src="https://tools-static.wmflabs.org/cdnjs/ajax/libs/ipaddr.js/2.0.1/ipaddr.min.js" crossorigin="anonymous"></script>
 <script>
 	Vue.createApp({
 		data() {
@@ -145,8 +113,5 @@
 		}
 	}).mount("#app");
 </script>
-
-
 </body>
-
 </html>
