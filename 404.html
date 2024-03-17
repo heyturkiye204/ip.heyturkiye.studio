@@ -1,10 +1,62 @@
-{% extends 'templates/tool-base.html' %}
+<!DOCTYPE html>
+<html lang="en">	
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
-{% set title = "ip-range-calc" %}
-{% set desc = "calculate the smallest CIDR block encompassing a given list of IP addresses" %}
+    <!-- Facebook Sharing -->
+    <meta property="og:title" content="ftools" />
+    <meta property="og:description" content="Fastily's Tools" />
+    <meta property="og:image" content="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c5/Toolforge_logo.svg/480px-Toolforge_logo.svg.png" />
 
-{% block tool %}
-{% raw %}
+    <!-- Googlebot -->
+    <meta name="description" content="Fastily's Wikipedia Tools.  Privacy First: No ads, no tracking, no nonsense." />
+
+    <title>ip-range-calc</title>
+
+    <!-- favicon -->
+    <link rel="icon" href="https://tools-static.wmflabs.org/toolforge/favicons/favicon.ico" type="image/x-icon">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="https://tools-static.wmflabs.org/cdnjs/ajax/libs/twitter-bootstrap/4.6.1/css/bootstrap.min.css" crossorigin="anonymous">
+
+    
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-md navbar-light bg-light" id="main-nav">
+        <div class="container-fluid">
+            <a href="/" class="navbar-brand"><span style="font-family:'Trebuchet MS';color:Indigo;font-weight:bold;"><span style="font-size:120%;">F</span><span style="font-size:90%;">TOOLS</span></span></a>
+            <button class="navbar-toggler" data-toggle="collapse" data-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ml-auto">
+                    
+
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="https://github.com/fastily/ftools">Source</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="https://toolforge.org">Toolforge</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    
+<header>
+    <div class="container jumbotron mt-4">
+        <h1 class="display-4">ip-range-calc</h1>
+        <p class="lead">(calculate the smallest CIDR block encompassing a given list of IP addresses)</p>
+    </div>
+</header>
+
+
+
 <section class="container mb-5">
 	<div id="app">
 		<form>
@@ -35,11 +87,16 @@
 		<div class="alert alert-warning mt-2" role="alert" v-if="showBigRangeWarning">⚠️ MediaWiki prohibits rangeblocks this large. Try experimenting with multiple, smaller ranges.</div>
 	</div>
 </section>
-{% endraw %}
-{% endblock %}
 
-{% block scripts %}
-{% raw %}
+
+
+
+
+    <script src="https://tools-static.wmflabs.org/cdnjs/ajax/libs/jquery/3.5.1/jquery.min.js" crossorigin="anonymous"></script>
+    <script src="https://tools-static.wmflabs.org/cdnjs/ajax/libs/twitter-bootstrap/4.6.1/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+    <script src="https://tools-static.wmflabs.org/cdnjs/ajax/libs/vue/3.2.27/vue.global.prod.min.js" crossorigin="anonymous"></script>
+    
+
 <script src="https://tools-static.wmflabs.org/cdnjs/ajax/libs/ipaddr.js/2.0.1/ipaddr.min.js" crossorigin="anonymous"></script>
 
 <script>
@@ -88,5 +145,8 @@
 		}
 	}).mount("#app");
 </script>
-{% endraw %}
-{% endblock %}
+
+
+</body>
+
+</html>
