@@ -1,0 +1,92 @@
+{% extends 'templates/tool-base.html' %}
+
+{% set title = "ip-range-calc" %}
+{% set desc = "calculate the smallest CIDR block encompassing a given list of IP addresses" %}
+
+{% block tool %}
+{% raw %}
+<section class="container mb-5">
+	<div id="app">
+		<form>
+			<div class="form-group mb-4">
+				<label for="mainTextInput">List the IP addresses below (one per line)</label>
+				<textarea class="form-control" rows="7" id="mainTextInput" v-model.trim="inputText"></textarea>
+			</div>
+			<fieldset class="form-group mb-4">
+				<legend class="col-form-label">What kind of IP addresses are these?</legend>
+				<div class="form-check">
+					<input class="form-check-input" type="radio" name="ipv4Radio" id="exampleRadios1" value="4" v-model="selectedIPType">
+					<label class="form-check-label" for="ipv4Radio">IPv4</label>
+				</div>
+				<div class="form-check">
+					<input class="form-check-input" type="radio" name="ipv6Radio" id="exampleRadios2" value="6" v-model="selectedIPType">
+					<label class="form-check-label" for="ipv6Radio">IPv6</label>
+				</div>
+			</fieldset>
+
+			<input type="button" value="Calculate" class="btn btn-primary" v-on:click.prevent="calculate" :disabled="!inputText">
+		</form>
+
+		<div class="card mt-4" v-show="showResult">
+			<div class="card-header">Result</div>
+			<div class="card-body">{{resultText}}</div>
+		</div>
+
+		<div class="alert alert-warning mt-2" role="alert" v-if="showBigRangeWarning">⚠️ MediaWiki prohibits rangeblocks this large. Try experimenting with multiple, smaller ranges.</div>
+	</div>
+</section>
+{% endraw %}
+{% endblock %}
+
+{% block scripts %}
+{% raw %}
+<script src="https://tools-static.wmflabs.org/cdnjs/ajax/libs/ipaddr.js/2.0.1/ipaddr.min.js" crossorigin="anonymous"></script>
+
+<script>
+	Vue.createApp({
+		data() {
+			return {
+				inputText: "",
+				selectedIPType: "4",
+				resultText: "",
+				showBigRangeWarning: false,
+				showResult: false
+			};
+		},
+		methods: {
+			calculate() {
+				this.showBigRangeWarning = false;
+				let [protocol, cnt, warningThreshold] = this.selectedIPType === "4" ? [ipaddr.IPv4, 32, 16] : [ipaddr.IPv6, 128, 19];
+
+				// validate and parse IP addresses from user input
+				const addrs = [];
+				for (const ip of this.inputText.split("\n").map(s => s.replace(/[\u200B-\u200F]/, "").trim()).filter(s => s)) {
+					if (!protocol.isValid(ip))
+						return alert(`ERROR: "${ip}" is not a valid IPv${this.selectedIPType} address, please fix this before proceeding.`);
+
+					addrs.push(ipaddr.parse(ip));
+				}
+
+				// count backwards until we get a CIDR match
+				const first = addrs[0];
+				for (const ip of addrs.slice(1))
+					while (!ip.match(first, cnt) && cnt)
+						cnt--;
+
+				// show warning for big ranges
+				if (cnt < warningThreshold)
+					this.showBigRangeWarning = true;
+
+				// apply appropriate subnet mask to first IP address
+				const addrBytes = first.toByteArray(), mask = protocol.subnetMaskFromPrefixLength(cnt).toByteArray();
+				for (let i = 0; i < mask.length; i++)
+					addrBytes[i] &= mask[i];
+
+				this.resultText = `${ipaddr.fromByteArray(addrBytes).toString()}/${cnt}`
+				this.showResult = true;
+			}
+		}
+	}).mount("#app");
+</script>
+{% endraw %}
+{% endblock %}
