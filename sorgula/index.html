@@ -21,34 +21,35 @@
 <body>
     <nav class="navbar navbar-expand-md navbar-light bg-light" id="main-nav">
         <div class="container-fluid">
-            <a href="/" class="navbar-brand"><span style="font-family:'Trebuchet MS';color:Indigo;font-weight:bold;"><span style="font-size:120%;">F</span><span style="font-size:90%;">TOOLS</span></span></a>
+            <a href="/" class="navbar-brand"><span style="font-family:'Trebuchet MS';color:Indigo;font-weight:bold;"><span style="font-size:120%;">Hey Türkiye - Araçlar</span><span style="font-size:90%;"></span></span></a>
             <button class="navbar-toggler" data-toggle="collapse" data-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ml-auto">
+		    <li class="nav-item">
+                        <a class="nav-link" href="/">Anasayfa</a>
+                    </li>	
                     <li class="nav-item">
-                        <a class="nav-link" href="https://github.com/fastily/ftools">Source</a>
+                        <a class="nav-link" href="https://github.com/heyturkiye204/ip.heyturkiye.studio/">Kaynak Kod</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="https://toolforge.org">Toolforge</a>
+                        <a class="nav-link" href="https://heyturkiye.live/">🏠 Hakkımda</a>
                     </li>
                 </ul>
             </div>
         </div>
-    </nav>
-
-    
+    </nav>    
 <header>
     <div class="container jumbotron mt-4">
-        <h1 class="display-4">what-is-my-ip</h1>
-        <p class="lead">(Show your IP address)</p>
+        <h1 class="display-4">IP adresi sorgulama</h1>
+        <p class="lead">Bu sayfa, Bağlandığınız internet sağlayıcısı üzerinden IP adresinizi gösterir. (IP adresiniz <b>kesinlikle site sahibine/başkasına paylaşılmamaktadır</b>.)</p>
     </div>
 </header>
 <section class="container">
 	<div id="app">
 		<div class="card mt-4">
-			<div class="card-header">Your IP Address</div>
+			<div class="card-header">IP adresiniz</div>
 			<div class="card-body">
 				<span class="spinner-border text-primary" role="status" v-if="!outputText"></span>
 				<pre v-else>{{outputText}}</pre>
